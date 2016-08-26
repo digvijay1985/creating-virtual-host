@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Creating-virtual-host by digvijay1985</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Creating-virtual-host</h1>
+        <p>Creating virtual host in Apache</p>
+
+        <p class="view"><a href="https://github.com/digvijay1985/creating-virtual-host">View the Project on GitHub <small>digvijay1985/creating-virtual-host</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/digvijay1985/creating-virtual-host/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/digvijay1985/creating-virtual-host/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/digvijay1985/creating-virtual-host">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="creating-virtual-host-in-apache" class="anchor" href="#creating-virtual-host-in-apache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating virtual host in Apache</h1>
+
+<ol>
+<li>
+<code>/etc/hosts</code> file in Notepad or Any Editor like <code>Sublime Text</code> or <code>Notepad++</code> for <strong>Mac</strong> users open <strong>Finder</strong> then navigate to <em>Go &gt; Go To Folder</em> now type <code>/etc/hosts</code> open hosts file. For <strong>Windows</strong> users   <code>C:\Windows\System32\Drivers\etc\hosts</code>
+</li>
+<li>This opens a system file that contains the following line: --
+<code>127.0.0.1    localhost</code>
+</li>
+<li>On the next line, type <code>127.0.0.0</code> followed by a space and the name of the virtual host you want to create for example <code>mysite.dev</code> as new line will be<code>127.0.0.1    mysite.dev</code>
+</li>
+<li>Save the file when you have finished adding the names of your virtual hosts.</li>
+<li>Now open the main Apache configuration file, <code>httpd.conf</code>, which is located at <code>Applications/MAMP/conf/apache/httpd.conf</code> in <strong>MAC</strong> or <code>C:\wamp\bin\apache\Apache2.2.11\conf\httpd.conf</code> in <strong>Windows</strong>.</li>
+<li>Now search following line --
+<code># Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf</code>
+</li>
+<li>Remove the hash (<code>#</code>) sign from the beginning of the line that begins with <code>Include</code>.</li>
+<li>Save the file, and then open <code>Applications/MAMP/conf/apache/extra/httpd-vhosts.conf</code>. This is where you define the virtual hosts</li>
+<li>At the bottom of the page are two examples of how to define virtual hosts in Apache. Now Update the files with below code.</li>
+</ol>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">&lt;</span><span class="pl-c1">VirtualHost</span> <span class="pl-k">*</span>:<span class="pl-c1">80</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">    <span class="pl-c1">DocumentRoot</span> <span class="pl-s"><span class="pl-pds">"</span>/Applications/MAMP/htdocs<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">    <span class="pl-c1">ServerName</span> <span class="pl-c1">localhost</span></span>
+<span class="pl-s1"><span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-c1">VirtualHost</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1"><span class="pl-k">&lt;</span><span class="pl-c1">VirtualHost</span> <span class="pl-k">*</span>:<span class="pl-c1">80</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">    <span class="pl-c1">DocumentRoot</span> <span class="pl-s"><span class="pl-pds">"</span>/Applications/MAMP/htdocs/mysite<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">    <span class="pl-c1">ServerName</span> <span class="pl-c1">mysite</span><span class="pl-k">.</span><span class="pl-c1">dev</span></span>
+<span class="pl-s1"><span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-c1">VirtualHost</span><span class="pl-k">&gt;</span></span></pre></div>
+
+<p>Save all the files you have edited, and restart the servers in the MAMP control panel. You should now be able to access the virtual host with the following URL: <a href="http://mysite.dev/">http://mysite.dev/</a></p>
+
+<p><strong>Note:-</strong> If you want to create more than one virtual host, copy one of the definitions, and edit it accordingly.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/digvijay1985">digvijay1985</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
